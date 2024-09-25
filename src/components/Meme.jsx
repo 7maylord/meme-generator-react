@@ -2,14 +2,21 @@ import { useState } from "react";
 import memesData from "../memesData";
 
 export default function Meme() {
-  const [randomMeme, setRandomMeme] = useState("");
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "",
+  });
+  const [allMemeImages, setallMemeImages] = useState(memesData);
 
   const getRandomMeme = () => {
     const memesArray = memesData.data.memes;
     const randomIndex = Math.floor(Math.random() * memesArray.length);
-    const randomImage = memesArray[randomIndex].url;
-    setRandomMeme(randomImage);
-    console.log(randomImage); 
+    const url = memesArray[randomIndex].url;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
   };
 
   return (
@@ -42,7 +49,7 @@ export default function Meme() {
       </button>
       <div className="w-[447px] h-[268px] mt-8 ">
         {/* The image will be displayed later */}
-        { randomMeme && <img src={randomMeme} alt="Meme" />}
+        {meme.randomImage && <img src={meme.randomImage} alt="Meme" />}
       </div>
     </main>
   );
