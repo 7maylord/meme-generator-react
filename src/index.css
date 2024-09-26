@@ -9,9 +9,27 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   @apply m-0 flex items-center justify-center bg-blue-200;
+}
+
+.meme-text {
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: Impact, sans-serif;
+  text-shadow:
+    2px 2px 0 black,
+    -2px -2px 0 black,
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    0 2px 0 black,
+    2px 0 0 black,
+    0 -2px 0 black,
+    -2px 0 0 black,
+    2px 2px 5px black;
 }

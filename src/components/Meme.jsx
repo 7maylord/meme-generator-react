@@ -19,6 +19,14 @@ export default function Meme() {
     }));
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  };
+
   return (
     <main className="flex flex-col items-center h-16 text-2xl mt-3">
       <div className="flex flex-row gap-4 ">
@@ -28,6 +36,9 @@ export default function Meme() {
             <input
               type="text"
               className="border border-black rounded-md h-8 w-full mb-5"
+              name="topText"
+              value={meme.topText}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -37,6 +48,9 @@ export default function Meme() {
             <input
               type="text"
               className="border border-black rounded-md h-8 w-full mb-5"
+              name="bottomText"
+              value={meme.bottomText}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -47,9 +61,20 @@ export default function Meme() {
       >
         Get a new meme image 🖼
       </button>
-      <div className="w-[447px] h-[268px] mt-8 ">
-        {/* The image will be displayed later */}
-        {meme.randomImage && <img src={meme.randomImage} alt="Meme" />}
+      <div className="relative w-[447px] mt-8">
+        {meme.randomImage && (
+          <img
+            src={meme.randomImage}
+            alt="Meme"
+            className="max-w-full rounded-[3px]"
+          />
+        )}
+        <h2 className="absolute w-[80%] text-center left-1/2 transform -translate-x-1/2 top-0 mt-3 px-1 meme-text">
+          {meme.topText}
+        </h2>
+        <h2 className="absolute w-[80%] text-center left-1/2 transform -translate-x-1/2 bottom-0 mb-3 px-1 meme-text">
+          {meme.bottomText}
+        </h2>
       </div>
     </main>
   );
