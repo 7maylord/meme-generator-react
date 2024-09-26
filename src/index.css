@@ -12,9 +12,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  @apply m-0 flex items-center justify-center bg-blue-200;
+* {
+  box-sizing: border-box;
 }
+
+body {
+  @apply m-0 font-sans;
+}
+
+/* Custom Header Styles */
+.header {
+  @apply flex items-center h-16 bg-gradient-to-r from-[#672280] to-[#A626D3] text-white p-5;
+}
+
+/* Responsive Adjustments */
+.header {
+  @apply h-16 md:h-20;
+  /* Adjust height for medium screens */
+}
+
 
 .meme-text {
   color: white;

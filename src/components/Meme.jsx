@@ -21,7 +21,7 @@ export default function Meme() {
           error
         );
         // If the API fails, use the imported memes
-        setAllMemes(mesData.data.memes);
+        setAllMemes(memesData.data.memes);
       });
   }, []);
 
@@ -44,7 +44,7 @@ export default function Meme() {
   };
 
   return (
-    <main className="flex flex-col items-center h-16 text-2xl mt-3">
+    <main className="flex flex-col items-center h-16 p-9 text-2xl mt-3">
       <div className="flex flex-row gap-4 ">
         <div>
           <label>
@@ -73,7 +73,7 @@ export default function Meme() {
       </div>
       <button
         onClick={getRandomMeme}
-        className="w-[447px] h-[40px] bg-violet-700 text-white rounded-[5px] font-semibold text-[16px] mt-3 hover:bg-violet-900"
+        className="w-full h-30 bg-fuchsia-700 text-white rounded-[5px] font-bold text-2xl mt-3 hover:bg-fuchsia-900"
       >
         Get a new meme image 🖼
       </button>

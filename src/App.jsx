@@ -5,7 +5,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="m-0 flex flex-col items-center justify-center ">
+    <div className="m-20 ">
       <Header />
       <Meme />
     </div>
