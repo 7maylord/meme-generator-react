@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import memesData from "../memesData";
 
 export default function Meme() {
@@ -7,12 +7,28 @@ export default function Meme() {
     bottomText: "",
     randomImage: "",
   });
-  const [allMemeImages, setallMemeImages] = useState(memesData);
+  const [allMemes, setAllMemes] = useState(memesData);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllMemes(data.data.memes);
+      })
+      .catch((error) => {
+        console.error(
+          "API fetch failed, falling back to imported memes:",
+          error
+        );
+        // If the API fails, use the imported memes
+        setAllMemes(mesData.data.memes);
+      });
+  }, []);
 
   const getRandomMeme = () => {
-    const memesArray = memesData.data.memes;
-    const randomIndex = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomIndex].url;
+    if (allMemes.length === 0) return; // Ensure there are memes to select from
+    const randomIndex = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomIndex].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
       randomImage: url,
